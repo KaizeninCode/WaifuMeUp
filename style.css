@@ -3,11 +3,12 @@
     padding: 0;
     scroll-behavior: smooth;
     font-family: lora, inter, montserrat, sans-serif;
+    box-sizing: border-box;
 }
 
 body, section {
     height: 100vh;
-    width: 100vw;
+    /* width: 100%; */
     color: ivory;
 }
 
@@ -16,6 +17,7 @@ body::-webkit-scrollbar {
 }
 
 #hero {
+    width: 100%;
     background-image: url(/assets/background.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -26,7 +28,7 @@ body::-webkit-scrollbar {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 1.625rem;
+    padding: 1.2rem 1.625rem;
     /* margin: 0.625rem 0; */
     font-size: 1.25rem;
     
@@ -97,5 +99,18 @@ body::-webkit-scrollbar {
 }
 
 #nsfw {
-    background-color: #171717
+    /* border: 1px dotted ivory; */
+    height: 100vh;
+    background-color: #171717;
+    text-align: center;
+    padding: 6.25rem;
+}
+
+#nsfw-content {
+    /* border: 1px dotted ivory; */
+    outline: transparent;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
 }
