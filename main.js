@@ -36,33 +36,7 @@ document.addEventListener('DOMContentLoaded', displayFirstPost)
 
 
 const apiUrl = 'http://localhost:3000/waifus';
-// function displayFirstPost() {
-//     fetch(apiUrl)
-//     .then(res => res.json())
-//     .then(data => data.forEach(waifu => {
-//         let container = document.querySelector('#nsfw-content')
-//         let lightContainer = document.querySelector('#light-container #nsfw-content')
 
-//         container.innerHTML = '';
-//         lightContainer.innerHTML = '';
-
-//         container.innerHTML += `
-//         <div id="nsfw-img">
-//             <img src = ${waifu.imageUrl} alt=${waifu.name}>
-//             <p id='a' onclick='likePost()'>Like</p>
-//             <p id='b' onclick='addToFavs()'>Save</p>            
-//         </div>
-//         `    
-//         lightContainer.innerHTML += `
-//         <div id="nsfw-img">
-//             <img src = ${waifu.imageUrl} alt=${waifu.name}>
-//             <p id='a' onclick='likePost()'>Like</p>
-//             <p id='b' onclick='addToFavs()'>Save</p>            
-//         </div>
-//         `    
-//     }))
-       
-// }
 function displayFirstPost() {
     fetch(apiUrl)
         .then(res => res.json())
