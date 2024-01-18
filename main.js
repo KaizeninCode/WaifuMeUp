@@ -1,23 +1,31 @@
 //DARK-LIGHT MODE TOGGLE
-const themeToggle = document.querySelector('#theme-toggle');
+const container = document.querySelector('.container')
+const cloneContainer = container.cloneNode(true)
+cloneContainer.id = 'light-container'
+document.body.appendChild(cloneContainer)
+cloneContainer.classList.remove('active')
 
-themeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('dark');
-  themeToggle.classList.toggle('dark');
+const toggleIcons = document.querySelectorAll('.toggle-icon');
+const icons = document.querySelectorAll('.toggle-icon i')
+const lightContainer = document.querySelector('#light-container')
 
-  if (document.body.classList.contains('dark')) {
-    localStorage.setItem('theme', 'dark');
-  } else {
-    localStorage.setItem('theme', 'light');
-  }
-});
+toggleIcons.forEach(toggle => {
+    toggle.addEventListener('click', () => {    
+        toggle.classList.add('disabled')
+        setTimeout(() => {
+            toggle.classList.remove('disabled')
+        }, 2000)
+        icons.forEach(icon => {
+        icon.classList.toggle('fa-moon');
+        })
+        container.classList.toggle('active')
+        lightContainer.classList.toggle('active')
+    })
+    })
+    
 
-const storedTheme = localStorage.getItem('theme');
 
-if (storedTheme === 'dark') {
-  document.body.classList.add('dark');
-  themeToggle.classList.add('dark');
-}
+
 //DOM FUNCTIONS
 document.addEventListener('DOMContentLoaded', displayFirstPost)
 
