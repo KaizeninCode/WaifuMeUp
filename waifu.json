@@ -101,12 +101,6 @@
       "imageUrl": "https://cdn.openart.ai/uploads/image_V08H5Y40_1685666488404_512.webp"
     }
   ],
-  "favorites": [
-    {
-      "name": "undefined",
-      "imageUrl": "http://127.0.0.1:5500/undefined",
-      "id": 1
-    }
-  ],
+  "favorites": [],
   "saved-posts": []
 }

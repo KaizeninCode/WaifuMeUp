@@ -30,69 +30,119 @@ toggleIcons.forEach(toggle => {
 document.addEventListener('DOMContentLoaded', displayFirstPost)
 
 // https://api.waifu.im/fav/toggle
-// http://localhost:3000/waifus/20
 // http://localhost:3000/saved-posts
 // http://localhost:3000/favorites
+// https://api.waifu.im/search
 
 
-const apiUrl = 'https://api.waifu.im/search';
- function displayFirstPost() {
+const apiUrl = 'http://localhost:3000/waifus';
+// function displayFirstPost() {
+//     fetch(apiUrl)
+//     .then(res => res.json())
+//     .then(data => data.forEach(waifu => {
+//         let container = document.querySelector('#nsfw-content')
+//         let lightContainer = document.querySelector('#light-container #nsfw-content')
+
+//         container.innerHTML = '';
+//         lightContainer.innerHTML = '';
+
+//         container.innerHTML += `
+//         <div id="nsfw-img">
+//             <img src = ${waifu.imageUrl} alt=${waifu.name}>
+//             <p id='a' onclick='likePost()'>Like</p>
+//             <p id='b' onclick='addToFavs()'>Save</p>            
+//         </div>
+//         `    
+//         lightContainer.innerHTML += `
+//         <div id="nsfw-img">
+//             <img src = ${waifu.imageUrl} alt=${waifu.name}>
+//             <p id='a' onclick='likePost()'>Like</p>
+//             <p id='b' onclick='addToFavs()'>Save</p>            
+//         </div>
+//         `    
+//     }))
+       
+// }
+function displayFirstPost() {
     fetch(apiUrl)
-    .then(res => res.json())
-    .then(data => {
-        let container = document.querySelector('#nsfw-content')
-        container.innerHTML = `
-        <div id="nsfw-img">
-            <img src = ${data.source} alt=${data.name}>
-        </div>
-        <div id='img-info'>
-            <p id = 'a' onclick='likePost()'>Like</p>
-            <p id = 'b' onclick='addToFavs()'>Save</p>            
-        </div>
-        `    
-    })    
+        .then(res => res.json())
+        .then(data => {
+            let container = document.querySelector('#nsfw-content');
+            let lightContainer = document.querySelector('#light-container #nsfw-content');
+
+            // Clear existing content
+            container.innerHTML = '';
+            lightContainer.innerHTML = '';
+
+            // Loop through the data and append each waifu content
+            data.forEach(waifu => {
+                container.innerHTML += `
+                    <div id="nsfw-img">
+                        <img src="${waifu.imageUrl}" alt="${waifu.name}">
+                        <div class="like-save">
+                            <p id='a' onclick='likePost()'>Like</p>
+                            <p id='b' onclick='addToFavs()'>Save</p>
+                        </div>            
+                    </div>
+                `;
+
+                lightContainer.innerHTML += `
+                    <div id="nsfw-img">
+                        <img src="${waifu.imageUrl}" alt="${waifu.name}">
+                        <div class="like-save">
+                            <p id='a' onclick='likePost()'>Like</p>
+                            <p id='b' onclick='addToFavs()'>Save</p>
+                        </div>            
+                    </div>
+                `;
+            });
+        })
+    .catch(error => {
+        console.error('Error fetching waifus:', error);
+    });
 }
+
 
 
 
 
 function likePost(){
     let like = document.getElementById('a')
-    like.addEventListener('click', () => alert('Added to Liked Posts.'))
-    // like.addEventListener('click', () => {
-    //     alert('Added to Liked Posts')
-    //     fetch('', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({
-    //             name: data.name,
-    //             imageUrl: data.imageUrl
-    //         })
-    //     })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         console.log('Success:', data);
-    //     })
-    //     .catch(error => {
-    //         console.error('Error:', error);
-    //     });
-    // })
+    // like.addEventListener('click', () => alert('Added to Liked Posts.'))
+        like.addEventListener('click', () => {
+            alert('Added to Liked Posts')
+            fetch('http://localhost:3000/saved-posts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: waifu.name,
+                    imageUrl: waifu.imageUrl
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        })
 }
 
 function addToFavs(){
     let save = document.getElementById('b')
     save.addEventListener('click', () => {
         alert('Added to Favorites')
-        fetch('https://api.waifu.im/fav/insert', {
+        fetch('http://localhost:3000/favorites', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                name: data.name,
-                imageUrl: data.imageUrl
+                name: waifu.name,
+                imageUrl: waifu.imageUrl
             })
         })
         .then(response => response.json())
