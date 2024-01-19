@@ -53,19 +53,21 @@ function displayFirstPost() {
                 container.innerHTML += `
                     <div id="nsfw-img">
                         <img src="${waifu.imageUrl}" alt="${waifu.name}">
+                        <p>${waifu.name}</p>
                         <div class="like-save">
                             <p id='a' onclick='likePost()'>Like</p>
                             <p id='b' onclick='addToFavs()'>Save</p>
-                        </div>            
-                    </div>
-                `;
-
-                lightContainer.innerHTML += `
+                            </div>            
+                            </div>
+                            `;
+                            
+                            lightContainer.innerHTML += `
                     <div id="nsfw-img">
                         <img src="${waifu.imageUrl}" alt="${waifu.name}">
+                        <p>${waifu.name}</p>
                         <div class="like-save">
-                            <p id='a' onclick='likePost()'>Like</p>
-                            <p id='b' onclick='addToFavs()'>Save</p>
+                            <p id='a' onclick='likePost(waifu)'>Like</p>
+                            <p id='b' onclick='addToFavs(waifu)'>Save</p>
                         </div>            
                     </div>
                 `;
@@ -80,7 +82,7 @@ function displayFirstPost() {
 
 
 
-function likePost(){
+function likePost(waifu){
     let like = document.getElementById('a')
     // like.addEventListener('click', () => alert('Added to Liked Posts.'))
         like.addEventListener('click', () => {
@@ -105,7 +107,7 @@ function likePost(){
         })
 }
 
-function addToFavs(){
+function addToFavs(waifu){
     let save = document.getElementById('b')
     save.addEventListener('click', () => {
         alert('Added to Favorites')
