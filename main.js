@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', displayFirstPost)
 // https://api.waifu.im/search
 
 
-const apiUrl = 'http://localhost:3000/waifus';
+const apiUrl = 'https://my-json-server.typicode.com//KaizeninCode/WaifuMeUp';
 
 function displayFirstPost() {
     fetch(apiUrl)
@@ -87,7 +87,7 @@ function likePost(waifu){
     // like.addEventListener('click', () => alert('Added to Liked Posts.'))
         like.addEventListener('click', () => {
             alert('Added to Liked Posts')
-            fetch('http://localhost:3000/saved-posts', {
+            fetch('https://my-json-server.typicode.com//KaizeninCode/WaifuMeUp/saved-posts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ function addToFavs(waifu){
     let save = document.getElementById('b')
     save.addEventListener('click', () => {
         alert('Added to Favorites')
-        fetch('http://localhost:3000/favorites', {
+        fetch('https://my-json-server.typicode.com//KaizeninCode/WaifuMeUp/favorites', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
