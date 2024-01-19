@@ -6,7 +6,7 @@
 
 .light {
     width: 100%;
-    background-image: url(/assets/bg-light.png);
+    background-image: url(./assets/bg-light.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;    
@@ -62,7 +62,7 @@ body::-webkit-scrollbar {
 
 #hero {
     width: 100%;
-    background-image: url(/assets/background.jpg);
+    background-image: url(./assets/background.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
