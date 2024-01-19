@@ -1,5 +1,5 @@
 # WaifuMeUp
-Author: Phil Wekullo (`github.com/KaizeninCode`)
+Author: Phil Wekullo (`https://www.github.com/KaizeninCode`)
 License: None
 
 Let's face it; we've all had moments of weakness. Moments where you're minding your business then temptations decide to test your faith and self-control. This here is the true embodiment of those heart-wrenching, nerve-wracking and loin-stirring temptations. Welcome to WaifuMeUp, where we let all our naughty imaginations run wild.
