@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', displayFirstPost)
 // https://api.waifu.im/search
 
 
-const apiUrl = 'http://localhost:3000/waifus';
+const apiUrl = 'https://my-json-server.typicode.com/KaizeninCode/WaifuMeUp/waifus';
 
 function displayFirstPost() {
     fetch(apiUrl)
@@ -82,51 +82,52 @@ function displayFirstPost() {
 
 
 
-function likePost(waifu){
+function likePost(){
     let like = document.getElementById('a')
-    // like.addEventListener('click', () => alert('Added to Liked Posts.'))
-        like.addEventListener('click', () => {
-            alert('Added to Liked Posts')
-            fetch('http://localhost:3000/saved-posts', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: waifu.name,
-                    imageUrl: waifu.imageUrl
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        })
+    like.addEventListener('click', () => alert('Added to Liked Posts.'))
+    // like.addEventListener('click', () => {
+        //     alert('Added to Liked Posts')
+        //     fetch('https://my-json-server.typicode.com//KaizeninCode/WaifuMeUp/saved-posts', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //         body: JSON.stringify({
+            //             name: waifu.name,
+        //             imageUrl: waifu.imageUrl
+        //         })
+        //     })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log('Success:', data);
+        //     })
+        //     .catch(error => {
+        //         console.error('Error:', error);
+        //     });
+        // })
 }
 
-function addToFavs(waifu){
+function addToFavs(){
     let save = document.getElementById('b')
-    save.addEventListener('click', () => {
-        alert('Added to Favorites')
-        fetch('http://localhost:3000/favorites', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: waifu.name,
-                imageUrl: waifu.imageUrl
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    })
+    save.addEventListener('click', () => alert('Added to Saved Posts.'))
+    // save.addEventListener('click', () => {
+    //     alert('Added to Favorites')
+    //     fetch('http://localhost:3000/favorites', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify({
+    //             name: waifu.name,
+    //             imageUrl: waifu.imageUrl
+    //         })
+    //     })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         console.log('Success:', data);
+    //     })
+    //     .catch(error => {
+    //         console.error('Error:', error);
+    //     });
+    // })
 }
